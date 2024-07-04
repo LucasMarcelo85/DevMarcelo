@@ -14,7 +14,9 @@ Tenho um grande interesse em desenvolver minhas habilidades técnicas e criar so
     media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
   />
   <img src="https://github-readme-stats.vercel.app/api?username=LucasMarcelo85&show_icons=true" />
-</picture>
+</picture><img src="https://raw.githubusercontent.com/MicaelliMedeiros/micaellimedeiros/master/image/computer-illustration.png" min-width="400px" max-width="400px" width="400px" align="right" alt="Computador iuriCode">
+
+
 
 
 
