@@ -2,7 +2,7 @@
 <p>( apresentação )</p>
 
 <div> 
-  <a href="[https://github.com/LucasMarcelo85/Meu-portfolio](https://lucasmarcelo8585.wixsite.com/my-site)" target="_blank"><img alt="" src="https://img.shields.io/badge/Portfolio-000?logo=vercel&logoColor=yellow&style=for-the-badge" style="vertical-align:center" /></a> 
+  <a href="https://lucasmarcelo8585.wixsite.com/my-site" target="_blank"><img alt=" site" src="https://img.shields.io/badge/Portfolio-000?logo=vercel&logoColor=yellow&style=for-the-badge" style="vertical-align:center" /></a> 
   <a href = "devfullmarcelo@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
   <a href="https://www.linkedin.com/in/marcelo-souza-882aab316" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
   
