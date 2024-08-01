@@ -27,3 +27,24 @@ function clearDisplay(){
     currentlnput="";
     document.getElementById("display").value="";
 }
+
+
+// 
+
+function press(num) {
+    let display = document.getElementById('display');
+    display.value += num;
+}
+
+function clearDisplay() {
+    document.getElementById('display').value = '';
+}
+
+function calculate(operation) {
+    let display = document.getElementById('display');
+    if (operation === '=') {
+        display.value = eval(display.value);
+    } else {
+        display.value += operation;
+    }
+}
