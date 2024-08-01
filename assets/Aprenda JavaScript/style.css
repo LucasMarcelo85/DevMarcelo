@@ -5,9 +5,9 @@ body {
 
 main {
     background-color: white;
-    width: 500px;
+    box-sizing: border-box;
     padding: 20px;
-    margin: auto;
+    
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.529);
 }
