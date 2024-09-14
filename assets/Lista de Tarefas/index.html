@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciador de Tarefas</h1>
+        
+        <div id="menu">
+            <button class="menu-btn" onclick="showForm()">CADASTRAR TAREFA</button>
+            <button class="menu-btn" onclick="listarMetas()">LISTAR TAREFAS</button>
+            <button class="menu-btn" onclick="metasRealizadas()">TAREFAS REALIZADAS</button>
+            <button class="menu-btn" onclick="metasAbertas()">TAREFAS ABERTAS</button>
+            <button class="menu-btn" onclick="deletarMetas()">DELETAR TAREFAS</button>
+            <!-- <button class="menu-btn" onclick="sair()">Sair</button> -->
+        </div>
+
+        <div id="form-section" class="hidden">
+            <h2>Cadastrar Tarefa</h2>
+            <input type="text" id="new-meta" placeholder="Digite sua meta">
+            <button onclick="addMeta()">Adicionar</button>
+            <p id="error-message" class="error"></p>
+            <button class="back-btn" onclick="voltarParaMenu()">Voltar ao Inicio</button>
+        </div>
+
+        <div id="meta-list-section" class="hidden">
+            <h2>Suas Tarefas/h2>
+            <ul id="meta-list"></ul>
+            <button class="back-btn" onclick="voltarParaMenu()">Voltar ao Inicio</button>
+        </div>
+    </div>
+
+    <script src="script/script.js"></script>
+</body>
+</html>
