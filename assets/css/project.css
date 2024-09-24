@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    
   }
   
   .menu button {
@@ -62,3 +63,27 @@
   .hidden {
     display: none;
   }
+
+
+@media (max-width: 748px){
+  .menu button {
+    display: flex;
+    width: 20em;
+    background-color: aquamarine;
+    
+  }
+}
+@media (max-width: 598px){
+  .menu button {
+    display: flex;
+    width: 100%;
+    background-color: aquamarine;
+    padding: 0.5px;
+    margin: 1px;
+    
+  }
+  .container{
+    width: 100%;
+
+  }
+}
