@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Poltronas no Avião</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        .reserved {
+            background-color: red;
+            color: white;
+        }
+        .available {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Simulação de Escolha de Poltronas no Avião</h1>
+
+    <div style="text-align:center;">
+        <label for="fileira">Escolha a fileira (1-10): </label>
+        <input type="number" id="fileira" min="1" max="10">
+        
+        <label for="poltrona">Escolha a poltrona (A-F): </label>
+        <select id="poltrona">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+        </select>
+        
+        <button onclick="reservarPoltrona()">Reservar</button>
+    </div>
+
+    <div style="text-align:center;">
+        <h2>Mapa de Poltronas</h2>
+        <table id="mapa">
+            <!-- As linhas de poltronas serão geradas via JavaScript -->
+        </table>
+    </div>
+
+    <script>
+        // Mapa de poltronas: 10 fileiras com 6 poltronas (A-F)
+        const reserva = Array.from({ length: 10 }, () => Array(6).fill(' '));
+        
+        // Função para gerar o mapa de poltronas
+        function gerarMapa() {
+            const mapa = document.getElementById('mapa');
+            mapa.innerHTML = '<tr><th></th><th>A</th><th>B</th><th>C</th><th></th><th>D</th><th>E</th><th>F</th></tr>';
+            for (let i = 0; i < 10; i++) {
+                let row = `<tr><td>${i + 1}</td>`;
+                for (let j = 0; j < 6; j++) {
+                    let classe = reserva[i][j] === 'x' ? 'reserved' : 'available';
+                    row += `<td class="${classe}">${reserva[i][j] === 'x' ? 'x' : ' '}</td>`;
+                    if (j === 2) row += '<td></td>'; // Separação entre colunas C e D
+                }
+                row += '</tr>';
+                mapa.innerHTML += row;
+            }
+        }
+
+        // Função para reservar uma poltrona
+        function reservarPoltrona() {
+            const fileira = parseInt(document.getElementById('fileira').value) - 1;
+            const poltrona = document.getElementById('poltrona').value;
+            const acento = { A: 0, B: 1, C: 2, D: 3, E: 4, F: 5 }[poltrona];
+
+            if (fileira < 0 || fileira > 9 || acento === undefined) {
+                alert('Escolha uma fileira ou poltrona válida.');
+                return;
+            }
+
+            if (reserva[fileira][acento] === 'x') {
+                alert('A poltrona já está ocupada. Selecione outra.');
+            } else {
+                reserva[fileira][acento] = 'x';
+                alert('Reserva realizada com sucesso!');
+                gerarMapa();
+            }
+        }
+
+        // Gera o mapa de poltronas ao carregar a página
+        window.onload = gerarMapa;
+    </script>
+</body>
+</html>
