@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="PT-BR" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrar</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./uploads/1728915161290.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="profile">
+        <img src="../../images/dm.png" alt="icon" />
+        <form id="loginForm" onsubmit="return handleLogin(event)">
+          <ul>
+            <li>
+              <label>Login</label>
+              <input type="text" id="username" placeholder="Nome de usuário" required />
+            </li>
+            <li>
+              <label>Senha</label>
+              <input type="password" id="password" placeholder="Senha" required />
+            </li>
+            <li>
+              <button type="submit">Entrar</button>
+            </li>
+            <li>
+              <a href="#">Esqueceu a senha?</a>
+              <button type="button" onclick="registerUser()">Cadastrar</button>
+              <div class="message" id="message"></div>
+            </li>
+          </ul>
+        </form>
+      </div>
+
+      <footer>
+        <a href="./ROUTS/Banner.html">Suport</a>
+      </footer>
+
+      <script>
+        async function handleLogin(event) {
+          event.preventDefault();
+
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+
+          try {
+            const response = await fetch('http://localhost:3000/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              const token = data.token;
+
+              // Decodificar o token JWT
+              const payload = JSON.parse(atob(token.split('.')[1]));
+
+              // Verificar o role e redirecionar
+              if (payload.role === 'admin') {
+                window.location.href = 'dashboard.html';
+              } else {
+                window.location.href = 'user_dashboard.html';
+              }
+            } else {
+              alert(data.message || 'Erro ao fazer login.');
+            }
+          } catch (error) {
+            console.error('Erro:', error);
+          }
+        }
+
+        function registerUser() {
+          // Função de registro de usuário
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+
+          fetch('http://localhost:3000/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const message = document.getElementById('message');
+              if (data.message === 'Usuário registrado com sucesso!') {
+                message.style.color = 'green';
+              } else {
+                message.style.color = 'red';
+              }
+              message.textContent = data.message;
+            })
+            .catch((error) => console.error('Erro:', error));
+        }
+      </script>
+    </div>
+  </body>
+</html>

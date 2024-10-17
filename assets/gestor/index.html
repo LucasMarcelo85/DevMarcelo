@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organização Financeira - Despesas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Controle de Despesas</h1>
+
+        <h2>Adicionar Despesas Fixas</h2>
+        <label for="despesaFixa">Despesa Fixa (R$):</label>
+        <input type="number" id="despesaFixa" placeholder="Valor da despesa fixa">
+        <button id="adicionarFixa">Adicionar Fixa</button>
+
+        <ul id="listaFixas"></ul>
+
+        <h2>Adicionar Despesas Variáveis</h2>
+        <label for="despesaVariavel">Despesa Variável (R$):</label>
+        <input type="number" id="despesaVariavel" placeholder="Valor da despesa variável">
+        <button id="adicionarVariavel">Adicionar Variável</button>
+
+        <ul id="listaVariaveis"></ul>
+
+        <h2>Valor Realizado</h2>
+        <label for="valorRealizado">Valor Realizado (R$):</label>
+        <input type="number" id="valorRealizado" placeholder="Valor realizado até agora">
+        <button id="calcular">Calcular</button>
+
+        <div id="resultado">
+            <h2>Resumo</h2>
+            <p id="meta"></p>
+            <p id="faltante"></p>
+            <p id="percentual"></p>
+        </div>
+
+        <canvas id="grafico"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

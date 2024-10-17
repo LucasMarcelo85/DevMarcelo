@@ -1,0 +1,42 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /* profile */
+  #profile {
+    text-align: center;
+    padding: 6px;
+  }
+  #profile img {
+    width: 10em;
+    border-radius: 30em;
+  
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+   
+  }
+  
+  footer {
+    padding: 24px 0;
+    text-align: center;
+    font-size: 12px;
+    
+  }
+  footer a{
+    text-decoration: none;
+  }
+  
+ 
