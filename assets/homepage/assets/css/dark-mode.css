@@ -1,0 +1,22 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+header.dark-mode {
+    background-color: #333;
+    color: #f1f1f1;
+}
+header h1 h3.dark-mode{
+    color: #f1f1f1;
+}
+
+footer.dark-mode {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+#darkModeToggle.dark-mode {
+    background-color: #444;
+    color: #f1f1f1;
+}

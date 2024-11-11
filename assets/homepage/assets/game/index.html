@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo com Animação</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #333;
+      color: #fff;
+    }
+    #animation {
+      width: 300px;
+      height: 300px;
+      background-size: cover;
+    }
+    #continue-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 22px;
+      display: none; /* Começa oculto */
+      cursor: pointer;
+      background-color: #008080;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="animation"></div>
+  <button id="continue-btn"><a href="https://ronnysenna.github.io/verificador-senha/">Continuar</a></button>
+
+  <script>
+    const frames = [];  // Array para armazenar os caminhos das imagens
+    const frameCount = 19;  // Total de imagens na animação
+    const animationDiv = document.getElementById('animation');
+    const continueButton = document.getElementById('continue-btn');
+    let currentFrame = 0;
+
+    // Carrega as imagens na array frames
+    for (let i = 1; i <= frameCount; i++) {
+      frames.push(`images/frame${i}.png`);
+    }
+
+    // Função para exibir o próximo frame
+    function showNextFrame() {
+      if (currentFrame < frames.length) {
+        animationDiv.style.backgroundImage = `url(${frames[currentFrame]})`;
+        currentFrame++;
+      } else {
+        // Exibe o último frame e mostra o botão "Continuar"
+        clearInterval(animationInterval);
+        continueButton.style.display = 'block';
+      }
+    }
+
+    // Oculta o botão ao clicar
+    continueButton.addEventListener('click', () => {
+      continueButton.style.display = 'none';
+      alert("Continuação do jogo...");
+      // Aqui você pode adicionar o que acontece depois de clicar no botão "Continuar"
+    });
+
+    // Inicia a animação
+    const animationInterval = setInterval(showNextFrame, 1000);  // Muda o frame a cada 999 ms
+  </script>
+</body>
+</html>

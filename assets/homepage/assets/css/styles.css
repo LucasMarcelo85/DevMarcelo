@@ -1,0 +1,149 @@
+/* Fonte e cores principais */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #ccc;
+    color: #333;
+    text-align: center;
+}
+
+/* Ajuste para o texto no cabeçalho */
+header h1{
+    position: relative;
+    z-index: 1;
+    color: #008080;
+    font-family: "Sour Gummy", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    font-variation-settings:"wdth" 100;
+}
+header h3{
+    font-family: 'Poppins', sans-serif;
+    color: #000fff;
+}
+
+#conteudo {
+    margin-top: 20px;
+}
+
+#conteudo img {
+    border-radius: 15px; /* Bordas arredondadas para as imagens */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+}
+
+/* Navbar e Menu */
+.navbar {
+    background-color: #333 !important;
+    text-align: center;
+}
+
+.navbar-brand .logo-img {
+    max-height: 100px !important; /* Ajuste o valor conforme necessário */
+    max-width: 160px !important; /* Ajuste conforme necessário */
+    height: auto;
+    width: auto;
+}
+
+
+.navbar .nav-link {
+    color: #fff !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar .nav-link:hover {
+    color: #ffc107 !important;
+}
+
+
+.footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+#botaoTopo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+    display: none; 
+    z-index: 1000; 
+}
+
+
+#botaoTopo:hover {
+    background-color: #555;
+}
+
+
+/* Botões */
+.btn-primary, .btn-info{
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+#darkModeToggle {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    border: none; /* Remove as bordas */
+}
+
+/* Responsividade para Navbar */
+@media (max-width: 991px) {
+    .navbar .navbar-brand {
+        margin-right: 0;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-collapse {
+        justify-content: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+    
+    /* Botões empilhados em telas menores */
+    .navbar-collapse .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Estilos para o modo noturno */
+.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+.dark-mode header {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+.dark-mode .navbar,
+.dark-mode footer {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+.dark-mode .navbar .nav-link,
+.dark-mode footer a {
+    color: #ffc107;
+}
+
+.dark-mode .navbar .nav-link:hover,
+.dark-mode footer a:hover {
+    color: #fff;
+}

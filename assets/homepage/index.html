@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança da Informação - Gael</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+<!-- Menu Superior com Botão de Modo Noturno, Baixar eBook e Verificador de Senha -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#"><img src="assets/img/logo50x50.png" class="logo-img"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+            <!-- <li class="nav-item"><a class="nav-link" href="#membros">MEMBROS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contatos">CONTATOS</a></li>
+            <li class="nav-item"><a class="nav-link" href="#saiba-mais">SAIBA MAIS</a></li> -->
+        </ul>
+        <div class="d-flex flex-column flex-lg-row">
+            <!-- Botão para Download do eBook no Menu -->
+            <a href="assets/ebook/seguranca-info.pdf" class="btn btn-primary mb-2 mb-lg-0 mr-lg-2" download="seguranca-info.pdf">Baixar eBook</a>
+            <!-- Botão para Verificador de Senha no Menu -->
+            <a href="./assets/game/index.html" target="_blank" class="btn btn-info mb-2 mb-lg-0 mr-lg-2">Verificador de Senha</a>
+            <!-- Botão de Modo Noturno -->
+            <button id="darkModeToggle" class="btn btn-secondary">Modo Noturno</button>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Cabeçalho com o mascote Gael -->
+<header class="text-center p-4">
+    <h1>Segurança da Informação para Crianças e Jovens</h1>
+    <h3>Aprenda sobre segurança online com o Gael!</h3>
+</header>
+
+<!-- Seções com os Tópicos e Imagens Alternadas -->
+<section id="conteudo" class="container mt-5">
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6">
+            <h2>Introdução</h2>
+            <p>Bem-vindos! Eu sou o Gael, seu guia e guardião
+                digital, aqui para ajudar todos a explorarem a
+                internet com segurança e confiança. Meu nome
+                significa “aquele que protege”, e é exatamente isso
+                que eu faço! Estou aqui para mostrar como
+                podemos aproveitar o melhor da internet e, ao
+                mesmo tempo, ficar atentos aos pequenos perigos
+                que ela pode ter.</p>
+                
+                <p>Imagina que a internet é como uma enorme
+                floresta mágica, cheia de aventuras, lugares
+                interessantes e novos amigos para conhecer. Mas,
+                assim como uma floresta de verdade, também tem
+                caminhos que podem nos levar a lugares perigosos
+                se não soubermos onde pisar. E é aí que eu entro!
+                Minha missão é ajudar você a identificar as boas
+                trilhas, ficar longe dos perigos e estar sempre
+                preparado.</p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="assets/img/01.jpeg" alt="Introdução à Segurança" class="img-fluid">
+        </div>
+    </div>
+    <hr>
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6 order-md-2">
+            <h2>Oque é a Segurança da informação?</h2>
+            <p>Quando estamos na internet,
+                compartilhamos coisas como nossos
+                nomes, fotos, senhas e muito mais. A
+                segurança da informação nos ajuda a
+                proteger essas informações, assim como
+                um cofre guarda tesouros. Com ela, você
+                pode explorar e se divertir na internet,
+                sabendo que seus dados estão seguros.
+                Vamos descobrir juntos como manter esse
+                "tesouro" bem protegido?</p>
+                
+                <p>Oque é a Segurança da informação?
+                Pensa comigo: quando você guarda um
+                segredo, quer que só as pessoas em quem
+                você confia saibam, certo? Segurança da
+                informação é exatamente isso! Ela existe
+                para proteger nossas informações e
+                garantir que só quem pode realmente ver
+                ou usar esses dados tenha acesso.</p>
+        </div>
+        <div class="col-md-6 text-center order-md-1">
+            <img src="assets/img/002.jpeg" alt="Privacidade Online" class="img-fluid">
+        </div>
+    </div>
+    <hr>
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6">
+            <h2>Como criar senhas seguras</h2>
+            <p>Senhas são como chaves mágicas que só
+                você tem. Uma senha segura deve ser
+                como uma muralha bem forte: difícil de
+                quebrar! Para fazer isso, use letras
+                maiúsculas, minúsculas, números e até
+                símbolos como # ou *. Quanto mais
+                variada, mais difícil será para alguém
+                adivinhar.</p>
+                
+                <p>Ah, e nunca use coisas fáceis como “12345”
+                ou o nome do seu pet. Com uma senha
+                forte, você impede que pessoas entrem nas
+                suas contas e mexam nas suas coisas. É
+                como se estivesse colocando um cadeado
+                poderoso para proteger o que é seu.</p>
+
+                <a href="./assets/game/index.html" target="_blank" class="btn btn-info mb-2 mb-lg-0 mr-lg-2">Teste a força da sua Senha !!!</a>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="assets/img/003.jpeg" alt="Senhas Seguras" class="img-fluid">
+        </div>
+    </div>
+    <hr>
+
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6 order-md-2">
+            <h2>Cuidados com compartilhamento
+                de dados pessoais</h2>
+            <p>Imagina que seus dados pessoais <li> Como
+                seu endereço, número de telefone ou até o
+                nome da sua escola, são como pedacinhos
+                do seu mundo. A gente só deve
+                compartilhá-los com pessoas de confiança,
+                como nossa família e amigos próximos.</li></p>
+
+            <p>Na internet, precisamos ter ainda mais
+                cuidado, porque nem todo mundo é quem
+                diz ser. Não passe informações pessoais
+                em sites desconhecidos, jogos ou com
+                quem você não conheça bem. Lembre-se, a
+                internet é um lugar incrível, mas a
+                segurança vem sempre em primeiro lugar!</p>
+        </div>
+        <div class="col-md-6 text-center order-md-1">
+            <img src="assets/img/004.jpeg" alt="Uso Seguro de Redes Sociais" class="img-fluid">
+        </div>
+    </div>
+    <hr>
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6">
+            <h2>O que é a privacidade?</h2>
+            <p>Privacidade é como uma cortina que
+                protege o que a gente quer deixar só para
+                nós mesmos ou para quem confiamos. Na
+                internet, nossa privacidade significa
+                escolher o que outras pessoas podem ver
+                sobre a gente <li> Como nossas fotos,
+                pensamentos e preferências.</li></p>
+                
+                <p> Quando você posta algo, sempre pense:
+                “Quem eu quero que veja isso?” Muitas
+                redes sociais e aplicativos têm opções para
+                escolher quem pode ver seu conteúdo.
+                Pode ser só você, seus amigos, ou até
+                qualquer pessoa. Escolha com cuidado! O
+                ideal é compartilhar a maioria das coisas
+                apenas com pessoas de confiança, como
+                familiares e amigos próximos. Assim, você
+                tem mais controle sobre quem acompanha
+                sua vida online.</p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="assets/img/005.jpeg" alt="Prevenção Contra Phishing" class="img-fluid">
+        </div>
+    </div>
+    <hr>
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6 order-md-2">
+            <h2>Alertas sobre o compartilhamento de
+                fotos, localização e informações pessoais</h2>
+            <p>Compartilhar uma foto ou marcar a sua
+                localização pode parecer inofensivo, mas
+                também pode mostrar mais sobre você do
+                que você imagina. Fotos de lugares onde
+                você está, como escola ou casa, podem dar
+                pistas sobre sua rotina e onde encontrar
+                você. Da mesma forma, marcar sua
+                localização ou compartilhar seu endereço e
+                telefone pode atrair pessoas desconhecidas
+                que não deveriam ter essas informações.</p>
+                
+                <p>Lembre-se: antes de compartilhar,
+                pergunte-se se é realmente seguro e se
+                você se sente à vontade para que essa
+                informação fique visível. Cuidados como
+                esses ajudam a manter você e sua
+                privacidade protegidos!</p>
+        </div>
+        <div class="col-md-6 text-center order-md-1">
+            <img src="assets/img/006.jpeg" alt="Cuidado com Aplicativos e Downloads" class="img-fluid">
+        </div>
+    </div>
+    <hr>
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6">
+            <h2>Cyberbullying e Comportamento Online</h2>
+            <p>Cyberbullying é uma forma de intimidação e abuso psicológico realizado através da internet, redes sociais, aplicativos de mensagens e outras plataformas digitais. Esse comportamento inclui insultos, disseminação de boatos, exclusão social, ameaças e o compartilhamento de informações privadas ou embaraçosas sobre uma pessoa sem o seu consentimento. O cyberbullying pode ter graves consequências emocionais e psicológicas para as vítimas, como ansiedade, depressão e até casos de automutilação ou suicídio, especialmente entre jovens.</p>
+
+            <p>A importância de manter um comportamento respeitoso no ambiente online é fundamental para prevenir o cyberbullying. A empatia e o respeito ajudam a criar um ambiente seguro e saudável para todos. Ao agir com responsabilidade e reconhecer o impacto que palavras e ações podem ter sobre os outros, promovemos uma cultura de apoio e compreensão. Ensinar e praticar o respeito nas interações digitais contribui para que as redes sociais e outros ambientes virtuais sejam espaços de convivência positiva e construtiva.</p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="assets/img/007.jpeg" alt="Cyberbullying e Comportamento Online" class="img-fluid">
+        </div>
+    </div>
+</section>
+
+<!-- Rodapé -->
+<footer id="contatos" class="footer bg-dark text-white text-center p-3">
+    <p>&copy; 2024 Equipe Gael</p>
+    <p>Siga-nos:</p>
+    <p> 
+        <a href="https://facebook.com" target="_blank" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank" class="text-white"><i class="fab fa-twitter"></i></a>
+    </p>
+</footer>
+
+    <!-- Botão de voltar ao topo usando ícone de seta para cima do Bootstrap -->
+    <button id="botaoTopo" class="btn btn-primary btn-sm" onclick="subirParaInicio()">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+
+<script src="assets/js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
