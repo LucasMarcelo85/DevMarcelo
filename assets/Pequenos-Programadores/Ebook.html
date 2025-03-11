@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pequenos Programadores</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #e3e3e3;
+      }
+
+      h1 {
+        color: #2c3e50;
+      }
+
+      #pdf-viewer {
+        width: 50%;
+        height: 80%;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+
+      #controls {
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #457b9d;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #2c3e50;
+      }
+
+      #download {
+        margin-top: 15px;
+        background-color: #28a745;
+      }
+
+      #download:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Confira nosso Ebook!</h1>
+    <div id="controls">
+      <button id="prev">Página Anterior</button>
+      <span id="page-num">Página: 1</span>
+      <button id="next">Próxima Página</button>
+    </div>
+    <canvas id="pdf-viewer"></canvas>
+    <a href="Ebook.pdf" download>
+      <button id="download">Baixar Ebook</button>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+      const url = "Ebook.pdf"; // Substitua pelo caminho do seu PDF
+
+      let pdfDoc = null,
+        pageNum = 1,
+        pageRendering = false,
+        pageNumPending = null,
+        scale = 1.5, // Ajuste o zoom
+        canvas = document.getElementById("pdf-viewer"),
+        ctx = canvas.getContext("2d");
+
+      // Renderiza a página
+      function renderPage(num) {
+        pageRendering = true;
+        pdfDoc.getPage(num).then((page) => {
+          const viewport = page.getViewport({ scale });
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          const renderContext = {
+            canvasContext: ctx,
+            viewport: viewport,
+          };
+          const renderTask = page.render(renderContext);
+
+          renderTask.promise.then(() => {
+            pageRendering = false;
+            if (pageNumPending !== null) {
+              renderPage(pageNumPending);
+              pageNumPending = null;
+            }
+          });
+        });
+
+        document.getElementById("page-num").textContent = `Página: ${num}`;
+      }
+
+      // Carrega o documento PDF
+      pdfjsLib.getDocument(url).promise.then((pdfDoc_) => {
+        pdfDoc = pdfDoc_;
+        renderPage(pageNum);
+      });
+
+      // Navegação entre páginas
+      document.getElementById("prev").addEventListener("click", () => {
+        if (pageNum <= 1) return;
+        pageNum--;
+        renderPage(pageNum);
+      });
+
+      document.getElementById("next").addEventListener("click", () => {
+        if (pageNum >= pdfDoc.numPages) return;
+        pageNum++;
+        renderPage(pageNum);
+      });
+    </script>
+  </body>
+</html>
