@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços — Desenvolvimento & Automações | Dev Marcelo</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <style>
+        /* Banner específico da página de serviços */
+    .services-banner{background-image:url('/images/banner.jpg');background-size:cover;background-position:center;height:360px;display:flex;align-items:center;justify-content:center}
+    /* Overlay escuro mais forte para garantir legibilidade */
+    .services-banner__overlay{width:100%;height:100%;background:linear-gradient(rgba(3,7,18,0.72),rgba(3,7,18,0.72));display:flex;align-items:center}
+    .services-banner__content{color:#fff;text-align:center;max-width:1100px;padding:0 1rem}
+    .services-banner__content h1{font-size:2rem;margin:0 0 .5rem;color:#fff;text-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .services-banner__content p{margin:0;opacity:0.95;color:#fff;text-shadow:0 4px 10px rgba(2,6,23,0.45)}
+    /* fila de imagens representando contexto: celular, eu, cliente, agente */
+    .services-banner__thumbs{display:flex;gap:0.75rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+    .services-banner__thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.28)}
+    @media(min-width:900px){.services-banner__content h1{font-size:2.6rem}.services-banner__thumbs img{width:84px;height:84px}}
+
+        /* Small page-specific overrides to keep the page clean and focused */
+        .services-hero { padding: 4rem 1.25rem; text-align: center; background: var(--green-50); }
+        .services-hero h1 { margin-bottom: 0.5rem; }
+        .services-hero p.lead { max-width: 900px; margin: 0 auto 1.25rem auto; color: rgba(0,0,0,0.8); }
+        .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+        .service-card { background:#fff; border-radius:10px; padding:1.25rem; box-shadow:0 6px 20px rgba(2,6,23,0.06); }
+        .service-card h3 { margin-top:0; }
+        .contact-cta { text-align:center; margin:2.5rem 0; }
+        .contact-cta .custom-button { font-size:1rem; padding:0.9rem 1.5rem; }
+        @media (max-width:900px){ .services-grid { grid-template-columns: 1fr; } }
+        /* ícone do WhatsApp dentro do botão */
+        .whatsapp-icon{width:20px;height:20px;object-fit:cover;vertical-align:middle;margin-right:0.6rem}
+        .button .whatsapp-icon{filter:brightness(0) invert(1)}
+    </style>
+</head>
+<body>
+
+    <!-- Banner com imagem no topo -->
+    <div class="services-banner" role="img" aria-label="Transforme sua Presença Digital com Tecnologia de Ponta">
+        <div class="services-banner__overlay">
+            <div class="services-banner__content">
+                <h1>Transforme sua Presença Digital com Tecnologia de Ponta</h1>
+                <p>No mundo atual, ter uma presença digital sólida e inteligente é essencial</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <header class="services-hero">
+        <h1> Desenvolvimento Inteligente e Automação Digital</h1>
+        <p class="lead"> Transforme sua Presença Digital com Tecnologia de Ponta<br>
+        No mundo atual, ter uma presença digital sólida e inteligente é essencial. Eu ajudo empresas e empreendedores a se destacarem com sites profissionais, sistemas automatizados e agentes de inteligência artificial humanizados — tudo pensado para gerar resultados reais, reduzir custos e aumentar a eficiência.</p>
+        <div class="contact-cta">
+            <a class="button big primary custom-button" href="https://wa.me/5585991908723" target="_blank" rel="noopener">
+                <img src="" alt="WhatsApp" class="whatsapp-icon" onerror="this.src='/images/iconwpp.png'" />
+                fale comigo 
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="inner">
+            <div class="projects" style="background:transparent; padding-top:1rem; padding-bottom:0;">
+                <div class="inner">
+                    <header>
+                        <h2>🧠 Serviços que Impulsionam o Seu Negócio</h2>
+                        <p>Ofereço soluções completas: do site institucional à automação avançada e agentes de IA.</p>
+                    </header>
+                </div>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card">
+                    <h3>🚀 Desenvolvimento de Páginas Web Profissionais</h3>
+                    <p>Criação de sites modernos, rápidos e totalmente personalizados para o seu negócio. Cada página é projetada com foco em performance, experiência do usuário e conversão.</p>
+                    <ul>
+                        <li>Design responsivo (celular, tablet e desktop)</li>
+                        <li>Integração com WhatsApp, Instagram e redes sociais</li>
+                        <li>SEO otimizado</li>
+                        <li>Hospedagem segura e painel administrativo</li>
+                    </ul>
+                    <p><em>Benefício:</em> transforme visitantes em clientes com um site que transmite credibilidade.</p>
+                </article>
+
+                <article class="service-card">
+                    <h3>⚙️ Programação de Automações Inteligentes</h3>
+                    <p>Automatize tarefas repetitivas e conecte sistemas para que seu negócio trabalhe por você.</p>
+                    <ul>
+                        <li>Envio automático de mensagens no WhatsApp</li>
+                        <li>Integrações com ERPs, CRMs e plataformas de vendas</li>
+                        <li>Captura e qualificação automática de leads</li>
+                        <li>Agendamento e notificações automatizadas</li>
+                    </ul>
+                    <p><em>Benefício:</em> economize tempo, reduza custos e aumente a eficiência.</p>
+                </article>
+
+                <article class="service-card">
+                    <h3> Integração com Banco de Dados e Relatórios</h3>
+                    <p>Todos os sistemas podem se integrar a bancos de dados e gerar relatórios em tempo real para decisões orientadas a dados.</p>
+                    <ul>
+                        <li>MySQL, Firebase, MongoDB, PostgreSQL</li>
+                        <li>Painéis automatizados em Google Sheets / Excel Online</li>
+                        <li>Dashboards e relatórios com métricas e históricos</li>
+                    </ul>
+                </article>
+
+                <article class="service-card">
+                    <h3>🤖 Agentes de Inteligência Artificial Humanizados</h3>
+                    <p>Assistentes virtuais que entendem contexto e conversam com naturalidade — integráveis ao WhatsApp, site e redes sociais.</p>
+                    <ul>
+                        <li>Criação de persona alinhada à marca</li>
+                        <li>Treinamento com conversas reais</li>
+                        <li>Relatórios de performance das interações</li>
+                        <li>Atendimento 24/7 e redução de custos</li>
+                    </ul>
+                </article>
+            </div>
+
+            <section style="max-width:900px; margin:2rem auto; padding:0 1rem;">
+                <h3> Por que escolher meus serviços</h3>
+                <ul>
+                    <li>Atendimento personalizado e soluções sob medida</li>
+                    <li>Foco em resultados mensuráveis e integração completa</li>
+                    <li>Tecnologia atual e suporte contínuo</li>
+                </ul>
+
+                <h3> Processo de trabalho</h3>
+                <ol>
+                    <li>Diagnóstico gratuito</li>
+                    <li>Proposta personalizada</li>
+                    <li>Desenvolvimento técnico e testes</li>
+                    <li>Entrega com acompanhamento e relatórios</li>
+                </ol>
+
+                <h3>📲 Pronto para começar?</h3>
+                <p class="contact-cta">Clique no botão e fale comigo direto no WhatsApp.</p>
+                <div class="contact-cta">
+                    <a class="button big primary custom-button" href="https://wa.me/5585991908723" target="_blank" rel="noopener">
+                <img src="" alt="WhatsApp" class="whatsapp-icon" onerror="this.src='/images/iconwpp.png'" />
+                fale comigo 
+            </a>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="wrapper style1 align-center" style="margin-top:3rem;">
+        <div class="inner">
+            <p>&copy; <a href="https://marcelosouza.site/">Dev Marcelo</a><a href="https://wa.me/5585991908723">— Desenvolvimento e Automações ·</a></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
