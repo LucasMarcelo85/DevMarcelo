@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrato de Prestação de Serviços</title>
+  <link rel="stylesheet" href="contrato.css">
+  <style>
+    .container{max-width:900px;margin:24px auto;padding:22px;font-family:Arial,Helvetica,sans-serif}
+    .services .service-item{border:1px solid #e9eef5;padding:12px;margin-bottom:10px;border-radius:8px;display:block}
+    .service-item input[type="checkbox"]{transform:scale(1.15);margin-right:8px;vertical-align:middle}
+    .service-item label{font-weight:600;display:inline-block}
+    #gerarPdf{background:#0b5ed7;color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:700;box-shadow:0 2px 6px rgba(11,94,215,.18)}
+    #gerarPdf:hover{background:#084bb5}
+    .signature-field input{width:100%;padding:8px;border:1px solid #d0d7de;border-radius:6px}
+    /* Impressão */
+   @media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Esconde inputs e botões */
+  input,
+  button,
+  textarea,
+  select {
+    display: none !important;
+  }
+
+  /* Modo impressão via fallback */
+  .printing-mode * {
+    visibility: hidden !important;
+  }
+
+  .printing-mode #printArea,
+  .printing-mode #printArea * {
+    visibility: visible !important;
+  }
+
+  .printing-mode #printArea {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 10mm;
+  }
+
+  .service-item {
+    border: none;
+    padding: 0;
+    margin: 0 0 8px 0;
+  }
+
+  .service-item label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .service-item p {
+    display: block;
+    margin: 4px 0 10px 0;
+    color: #222;
+  }
+
+  .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 6mm;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Contrato de Prestação de Serviços - DM Solution</h1>
+    <h2>CONTRATO DE PRESTAÇÃO DE SERVIÇOS PROFISSIONAIS</h2>
+
+    <p><strong>Contratada:</strong> DM Solution, representada por Lucas Marcelo Nascimento de Souza, CNPJ:
+      63.353.524/0001-86.</p>
+
+    <div class="contratante-details">
+      <p><strong>Contratante:</strong></p>
+      <div class="signature-field">
+        <label for="contratante-razao-social">Nome / Razão Social:</label>
+        <input type="text" id="contratante-razao-social" name="contratante-razao-social">
+      </div>
+      <div class="signature-field">
+        <label for="contratante-cpf-cnpj">CPF / CNPJ:</label>
+        <input type="text" id="contratante-cpf-cnpj" name="contratante-cpf-cnpj">
+      </div>
+      <div class="signature-field">
+        <label for="contratante-endereco">Endereço:</label>
+        <input type="text" id="contratante-endereco" name="contratante-endereco">
+      </div>
+      <div class="signature-field">
+        <label for="contratante-representante">Representante Legal:</label>
+        <input type="text" id="contratante-representante" name="contratante-representante">
+      </div>
+    </div>
+
+    <h3>1. OBJETO</h3>
+    <p>Prestação, pela Contratada, de serviços profissionais de tecnologia, marketing digital, criação e
+      consultoria, conforme opções escolhidas pela Contratante neste contrato e eventuais aditivos. Os serviços
+      poderão incluir desenvolvimento, integração, automação, gestão de campanhas e suporte técnico, entre outros,
+      detalhados na cláusula 2.</p>
+
+    <h3>2. ESCOPO E DESCRIÇÃO DOS SERVIÇOS</h3>
+    <p>As partes acordam que os seguintes serviços podem ser contratados isolada ou conjuntamente. Marque os serviços
+      desejados abaixo. Cada serviço contratado deverá constar em anexo ou no pedido de serviços, com escopo,
+      entregáveis, cronograma e preço.</p>
+
+    <div class="services">
+      <div class="service-item">
+        <input type="checkbox" id="svc-dev-web" name="servicos" value="Desenvolvimento Web" data-title="Desenvolvimento Web">
+        <label for="svc-dev-web"><strong>Desenvolvimento Web:</strong></label>
+        <p>Criação, modernização, manutenção e otimização de sites, lojas e landing pages. Entregáveis: layout
+          responsivo, testes, deploy e documentação mínima.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-trafego" name="servicos" value="Tráfego Pago" data-title="Tráfego Pago">
+        <label for="svc-trafego"><strong>Tráfego Pago:</strong></label>
+        <p>Planejamento, criação, configuração e otimização de campanhas em Google Ads, Meta Ads (Facebook/Instagram)
+          e outras plataformas.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-automacao" name="servicos" value="Automação" data-title="Automação">
+        <label for="svc-automacao"><strong>Automação:</strong></label>
+        <p>Implementação de fluxos (e-mail, WhatsApp, CRM), integração entre sistemas, gatilhos e segmentações.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-whatsapp" name="servicos" value="Campanhas por WhatsApp" data-title="Campanhas por WhatsApp">
+        <label for="svc-whatsapp"><strong>Campanhas por WhatsApp:</strong></label>
+        <p>Criação, segmentação e execução de campanhas via WhatsApp, incluindo automações de envio e relatórios de
+          performance.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-chatbot" name="servicos" value="Chatbots Avançados" data-title="Chatbots Avançados">
+        <label for="svc-chatbot"><strong>Agentes de IA e Chatbots Avançados:</strong></label>
+        <p>Desenvolvimento de bots híbridos (IA + regras), fluxos inteligentes, integração com CRMs e bases de
+          conhecimento.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-apis" name="servicos" value="APIs de Integração" data-title="APIs de Integração">
+        <label for="svc-apis"><strong>APIs de Integração:</strong></label>
+        <p>Desenvolvimento e integração de APIs, webhooks e conectores com sistemas de terceiros (pagamento, ERPs,
+          CRMs).</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-pagamento" name="servicos" value="Plataformas de Pagamento" data-title="Plataformas de Pagamento">
+        <label for="svc-pagamento"><strong>Integração com Plataformas de Pagamento:</strong></label>
+        <p>Integração e configuração de gateways (Mercado Pago, Stripe, Pagar.me) e automações de PIX/boletos.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-software" name="servicos" value="Desenvolvimento Mobile e Software" data-title="Desenvolvimento Mobile e Software">
+        <label for="svc-software"><strong>Desenvolvimento de Software e Apps Mobile:</strong></label>
+        <p>Desenvolvimento de sistemas sob medida, painéis administrativos e aplicativos para Android/iOS.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-suporte" name="servicos" value="Suporte Técnico e Manutenção" data-title="Suporte Técnico e Manutenção">
+        <label for="svc-suporte"><strong>Suporte Técnico e Manutenção:</strong></label>
+        <p>Correção de bugs, atualizações, monitoramento de performance e gestão de hospedagem/servidores.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-hospedagem" name="servicos" value="Hospedagem e Gerenciamento de Servidores" data-title="Hospedagem e Gerenciamento de Servidores">
+        <label for="svc-hospedagem"><strong>Hospedagem e Gerenciamento de Servidores:</strong></label>
+        <p>Hospedagem de sites, gestão de servidores cloud, configuração de ambientes, backups e segurança.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-consultoria" name="servicos" value="Consultoria Estratégica" data-title="Consultoria Estratégica">
+        <label for="svc-consultoria"><strong>Consultoria Estratégica:</strong></label>
+        <p>Análise do negócio, reestruturação digital, planejamento de expansão e recomendações técnicas/mercadológicas.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-redes" name="servicos" value="Gestão de Redes Sociais" data-title="Gestão de Redes Sociais">
+        <label for="svc-redes"><strong>Gestão de Redes Sociais:</strong></label>
+        <p>Planejamento e execução de conteúdo, publicações semanais, atendimento social e relatórios de engajamento.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-design" name="servicos" value="Design Gráfico" data-title="Design Gráfico">
+        <label for="svc-design"><strong>Design Gráfico:</strong></label>
+        <p>Identidade visual, criação de peças para redes, banners, layouts profissionais e materiais de apoio.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-seo" name="servicos" value="SEO" data-title="SEO">
+        <label for="svc-seo"><strong>SEO (Otimização para Google):</strong></label>
+        <p>Ajustes de palavras-chave, otimização on-page, estrutura do site para ranqueamento e relatórios mensais.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-video" name="servicos" value="Edição de Vídeo" data-title="Edição de Vídeo">
+        <label for="svc-video"><strong>Edição de Vídeo / Motion:</strong></label>
+        <p>Vídeos para anúncios, Reels, TikTok, vinhetas e animações básicas conforme escopo contratado.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-monitoramento" name="servicos" value="Monitoramento de Campanhas e KPIs" data-title="Monitoramento de Campanhas e KPIs">
+        <label for="svc-monitoramento"><strong>Monitoramento de Campanhas e KPIs:</strong></label>
+        <p>Relatórios mensais automatizados, análise de métricas e recomendações para otimização contínua.</p>
+      </div>
+
+      <div class="service-item">
+        <input type="checkbox" id="svc-sla" name="servicos" value="Suporte Premium / SLA" data-title="Suporte Premium / SLA">
+        <label for="svc-sla"><strong>Suporte Premium / SLA Prioritário (opcional):</strong></label>
+        <p>Atendimento prioritário, tempo de resposta reduzido e recursos dedicados sob cobrança adicional.</p>
+      </div>
+
+    </div>
+
+    <h3>3. PRAZOS E ENTREGA</h3>
+    <p>Os prazos serão definidos no escopo de cada serviço. Entregas parciais poderão ser realizadas para validação.
+      Alterações fora do escopo inicial serão tratadas como solicitações adicionais e orçadas separadamente.</p>
+
+    <h3>4. VALORES, FATURAMENTO E PAGAMENTO</h3>
+    <div class="valores-section">
+      <div class="signature-field">
+        <label for="valor-mensal">Valor Mensal (R$):</label>
+        <input type="number" id="valor-mensal" name="valor-mensal" placeholder="0,00">
+      </div>
+      <div class="signature-field">
+        <label for="valor-integracao">Valor da Integração/Implantação (R$):</label>
+        <input type="number" id="valor-integracao" name="valor-integracao" placeholder="0,00">
+      </div>
+    </div>
+    <ul>
+      <li>Os valores serão acordados no pedido de serviço ou proposta comercial e poderão incluir taxa de
+        implantação/integração e mensalidades.</li>
+      <li>Faturamento: mensal adiantado, ou conforme definido na proposta. Pagamentos em boleto, transferência ou
+        cartão. Taxas de transação cobradas separadamente quando aplicáveis.</li>
+      <li>Reajuste: após 12 meses, salvo outro índice pactuado.</li>
+      <li>Inadimplência: cobrança de multa e juros conforme legislação; serviços podem ser suspensos após aviso e
+        prazo de carência.</li>
+    </ul>
+
+    <h3>5. SUPORTE, MANUTENÇÃO E SLA</h3>
+    <p>O suporte técnico e a manutenção cobrem:</p>
+    <ul>
+      <li>Correções de bugs: priorização conforme severidade.</li>
+      <li>Atualizações: correções de segurança e melhorias menores.</li>
+      <li>Monitoramento de performance: verificação periódica, logs e alertas.</li>
+      <li>Hospedagem: backups e restores quando contratados.</li>
+    </ul>
+    <p>O prazo de resposta e resolução será definido no anexo de SLA. Service Level Agreement (SLA) opcional poderá
+      ser contratado com tempo de resposta premium e recursos dedicados.</p>
+
+    <h3>6. OBRIGAÇÕES DAS PARTES</h3>
+    <p><strong>Obrigações da Contratada:</strong></p>
+    <ul>
+      <li>Executar os serviços com diligência e conforme as práticas de mercado.</li>
+      <li>Comunicar avanços, bloqueios e entregar relatórios conforme combinado.</li>
+      <li>Manter sigilo das informações e dados fornecidos.</li>
+    </ul>
+    <p><strong>Obrigações da Contratante:</strong></p>
+    <ul>
+      <li>Fornecer documentos, acessos e informações necessárias em tempo hábil.</li>
+      <li>Validar entregas e responder aos pedidos de informação dentro de prazos razoáveis.</li>
+      <li>Efetuar pagamentos conforme acordado.</li>
+    </ul>
+
+    <h3>7. PROPRIEDADE INTELECTUAL E DIREITOS</h3>
+    <p>Os direitos sobre códigos, projetos e materiais serão acordados: normalmente, a Contratada concede licença de
+      uso dos entregáveis após quitação total dos valores acordados, salvo quando houver desenvolvimento sob
+      cessão expressa dos direitos autorais, que deverá constar em aditivo.</p>
+
+    <h3>8. CONFIDENCIALIDADE</h3>
+    <p>As partes obrigam-se a manter sigilo sobre informações técnicas, comerciais e estratégicas trocadas durante a
+      execução do contrato, por prazo mínimo de 2 (dois) anos após seu término, salvo informações de domínio público.
+    </p>
+
+    <h3>9. RESPONSABILIDADE</h3>
+    <p>As partes respondem por danos causados por dolo ou culpa grave. A responsabilidade da Contratada, em qualquer
+      hipótese, ficará limitada ao valor efetivamente pago pela Contratante nos últimos 12 (doze) meses relativos aos
+      serviços que geraram a reclamação, exceto em casos de dolo comprovado.</p>
+
+    <h3>10. RESCISÃO E MULTAS</h3>
+    <p>Rescisão por iniciativa de qualquer das partes deverá observar aviso prévio de 30 dias. Rescisão imotivada pela
+      Contratante antes do prazo mínimo contratado poderá acarretar multa proporcional a um mês de serviço e o
+      pagamento de serviços já prestados e despesas comprovadas.</p>
+
+    <h3>11. ALTERAÇÕES E ADITIVOS</h3>
+    <p>Qualquer alteração de escopo, prazo ou valor será formalizada por aditivo contratual ou ordem de serviço.</p>
+
+    <h3>12. LEGISLAÇÃO E FORO</h3>
+    <p>Este contrato rege-se pelas leis brasileiras. Para solução de controvérsias, as partes elegem o foro da Comarca
+      da Contratada, renunciando a qualquer outro, por mais privilegiado que seja.</p>
+
+    <h3>13. DISPOSIÇÕES FINAIS</h3>
+    <p>Impostos e encargos serão de responsabilidade da parte indicada na proposta. A nulidade de qualquer cláusula
+      não afetará as demais. As comunicações formais entre as partes deverão ser por e-mail com confirmação ou por
+      correspondência registrada.</p>
+
+    <h3>14. ASSINATURAS</h3>
+    <p>Por estarem de pleno acordo, as partes assinam este contrato em duas vias de igual teor.</p>
+
+    <div class="signatures">
+      <div class="signature-field">
+        <label for="contratante-nome">Contratante (nome / razão social):</label>
+        <input type="text" id="contratante-nome" name="contratante-nome">
+      </div>
+      <div class="signature-field">
+        <label for="assinatura-contratante">Assinatura / Carimbo:</label>
+        <input type="text" id="assinatura-contratante" name="assinatura-contratante">
+      </div>
+      <div class="signature-field">
+        <label for="data-contratante">Data:</label>
+        <input type="text" id="data-contratante" name="data-contratante" placeholder="____ / ____ / ______">
+      </div>
+
+      <div class="signature-field contratada">
+        <p><strong>Contratada – DM Solution</strong></p>
+        <p>Lucas Marcelo Nascimento de Souza</p>
+        <label for="assinatura-contratada">Assinatura:</label>
+        <input type="text" id="assinatura-contratada" name="assinatura-contratada">
+      </div>
+      <div class="signature-field">
+        <label for="data-contratada">Data:</label>
+        <input type="text" id="data-contratada" name="data-contratada" placeholder="____ / ____ / ______">
+      </div>
+    </div>
+
+    <div style="margin-top:20px;text-align:center;">
+      <button id="gerarPdf" type="button">Gerar PDF</button>
+    </div>
+
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="contrato.js"></script>
+
+
+  </div>
+
+</body>
+
+</html>

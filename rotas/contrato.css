@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2,
+h3 {
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.contract-field {
+  margin-bottom: 15px;
+}
+
+.contract-field label {
+  font-weight: bold;
+}
+
+.contract-field input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.services .service-item {
+  margin-bottom: 10px;
+}
+
+.services .service-item label {
+  font-weight: bold;
+}
+
+.signatures {
+  margin-top: 30px;
+  border-top: 2px solid #eee;
+  padding-top: 20px;
+}
+
+.signature-field {
+  margin-bottom: 20px;
+}
+
+.signature-field.contratada {
+  margin-top: 40px;
+}
+
+.signature-field input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.signature-field input[type="text"]:focus {
+  outline: none;
+  border-bottom: 1px solid #333;
+}
