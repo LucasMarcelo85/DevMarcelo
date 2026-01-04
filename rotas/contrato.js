@@ -46,8 +46,7 @@ function gerarPDF() {
     var selectedServices = [];
     checkedServices.forEach(function(checkbox) {
         selectedServices.push({
-            title: checkbox.getAttribute('data-title'),
-            description: checkbox.nextElementSibling.querySelector('p').textContent
+            title: checkbox.getAttribute('data-title')
         });
     });
 
