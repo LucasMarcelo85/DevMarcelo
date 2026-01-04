@@ -75,22 +75,22 @@ async function gerarPDF() {
     var contentPage1 = `
     <div ${pageStyle}>
         <div style="text-align: center; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 30px;">
-            <h1 style="font-size: 22px; margin: 0; color: #007bff; text-transform: uppercase;">Contrato de Prestação de Serviços Técnicos</h1>
+            <h1 style="font-size: 20px; margin: 0; color: #007bff; text-transform: uppercase;">Contrato de Prestação de Serviços Técnicos</h1>
             <p style="font-size: 11px; color: #666; margin-top: 5px;">DM Solution Connect - Soluções Digitais & Inteligência</p>
         </div>
 
         <div style="font-size: 13px; margin-bottom: 30px;">
-            <h2 style="font-size: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: bold;">1. PARTES CONTRATANTES</h2>
+            <h2 style="font-size: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: bold;">PARTES CONTRATANTES</h2>
             <p style="margin: 10px 0;"><strong>CONTRATANTE:</strong> ${razaoSocial || '________________________________________________'}</p>
             <p style="margin: 10px 0;"><strong>CNPJ/CPF:</strong> ${cpfCnpj || '________________________'}</p>
             <p style="margin: 10px 0;"><strong>ENDEREÇO:</strong> ${endereco || '________________________________________________'}</p>
             <p style="margin: 10px 0;"><strong>REPRESENTANTE:</strong> ${representante || '________________________________'}</p>
-            <p style="margin-top: 15px;"><strong>CONTRATADA:</strong> <strong>DM Solution</strong>, inscrita no CNPJ sob o nº 63.353.524/0001-86, com sede em Fortaleza-CE.</p>
+            <p style="margin-top: 10px;"><strong>CONTRATADA:</strong> <strong>DM Solution</strong>, inscrita no CNPJ sob o nº 63.353.524/0001-86, com sede em Fortaleza-CE.</p>
         </div>
 
         <div style="font-size: 13px;">
-            <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">CLÁUSULA 1ª - DO OBJETO E ESCOPO</h3>
-            <p style="margin-bottom: 15px;">1.1. O presente contrato tem por objeto a prestação dos serviços técnicos abaixo descritos:</p>
+            <h3 style="font-size: 15px; font-weight: bold; margin-bottom: 10px;">CLÁUSULA 1ª - DO OBJETO E ESCOPO</h3>
+            <p style="margin-bottom: 12px;">1.1. O presente contrato tem por objeto a prestação dos serviços técnicos abaixo descritos:</p>
             <div style="background: #fdfdfd; padding: 15px; border: 1px solid #f0f0f0; border-radius: 8px;">
                 ${servicesHtml}
             </div>
@@ -101,25 +101,25 @@ async function gerarPDF() {
     var contentPage2 = `
     <div ${pageStyle}>
         <div style="font-size: 13px; text-align: justify; line-height: 1.6;">
-            <h3 style="font-size: 14px; font-weight: bold;">CLÁUSULA 2ª - DO PRAZO E VIGÊNCIA</h3>
+            <h3 style="font-size: 12px; font-weight: bold;">CLÁUSULA 2ª - DO PRAZO E VIGÊNCIA</h3>
             <p>2.1. O presente contrato terá vigência mínima de <strong>03 (três) meses</strong>, com renovação automática por períodos iguais.</p>
             
-            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px;">CLÁUSULA 3ª - DA RESCISÃO E MULTA</h3>
+            <h3 style="font-size: 12px; font-weight: bold; margin-top: 20px;">CLÁUSULA 3ª - DA RESCISÃO E MULTA</h3>
             <p>3.1. A rescisão antecipada por parte da CONTRATANTE sem justa causa implicará em multa de 50% sobre o valor das parcelas restantes do período de vigência.</p>
 
-            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px; color: #d9534f;">CLÁUSULA 4ª - VALORES E CONDIÇÕES DE PAGAMENTO</h3>
+            <h3 style="font-size: 12px; font-weight: bold; margin-top: 20px;">CLÁUSULA 4ª - VALORES E CONDIÇÕES DE PAGAMENTO</h3>
             <p>4.1. Como contraprestação pelos serviços, a CONTRATANTE pagará:</p>
-            <p style="margin: 10px 0 10px 20px;"><strong>A) TAXA DE IMPLEMENTAÇÃO (SETUP):</strong> R$ ________________________</p>
+            <p style="margin: 10px 0 10px 20px;"><strong>A) TAXA DE IMPLEMENTAÇÃO:</strong> R$ ________________________</p>
             <p style="margin: 10px 0 10px 20px;"><strong>B) MENSALIDADE DOS SERVIÇOS:</strong> R$ ________________________</p>
             <p>4.2. Os pagamentos deverão ser quitados até o dia <strong>05 (cinco)</strong> de cada mês via PIX ou transferência bancária.</p>
 
-            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px;">CLÁUSULA 5ª - DAS OBRIGAÇÕES</h3>
+            <h3 style="font-size: 12px; font-weight: bold; margin-top: 20px;">CLÁUSULA 5ª - DAS OBRIGAÇÕES</h3>
             <p>5.1. A CONTRATADA deverá manter o padrão técnico de excelência. 5.2. A CONTRATANTE deverá fornecer os acessos e informações necessárias em tempo hábil.</p>
 
-            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px;">CLÁUSULA 6ª - CONFIDENCIALIDADE (LGPD)</h3>
+            <h3 style="font-size: 12px; font-weight: bold; margin-top: 20px;">CLÁUSULA 6ª - CONFIDENCIALIDADE (LGPD)</h3>
             <p>6.1. Ambas as partes comprometem-se com o sigilo total de dados sensíveis e estratégicos conforme a Lei Geral de Proteção de Dados.</p>
 
-            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px;">CLÁUSULA 7ª - DO FORO</h3>
+            <h3 style="font-size: 12px; font-weight: bold; margin-top: 20px;">CLÁUSULA 7ª - DO FORO</h3>
             <p>7.1. Fica eleito o foro da comarca de Fortaleza-CE para dirimir quaisquer dúvidas deste instrumento.</p>
         </div>
 
