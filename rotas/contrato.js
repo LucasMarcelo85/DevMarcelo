@@ -36,7 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-function gerarPDF() {
+async function gerarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'mm', 'a4');
+    
     var razaoSocial = document.getElementById('contratante-razao-social').value.trim();
     var cpfCnpj = document.getElementById('contratante-cpf-cnpj').value.trim();
     var endereco = document.getElementById('contratante-endereco').value.trim();
@@ -56,115 +59,101 @@ function gerarPDF() {
         return;
     }
 
-    // Gerar HTML dos serviços com proteção contra quebra de linha no meio do bloco
-    var servicesHtml = '<div style="margin-top: 10px;">';
+    var servicesHtml = '';
     selectedServices.forEach(function(service) {
         servicesHtml += `
-            <div style="margin-bottom: 10px; padding-left: 10px; border-left: 2px solid #007bff; page-break-inside: avoid;">
-                <h4 style="margin: 0 0 2px 0; font-size: 13px; font-weight: bold;">${service.title}</h4>
-                <p style="margin: 0; font-size: 11px; color: #444;">${service.description}</p>
+            <div style="margin-bottom: 8px; padding-left: 10px; border-left: 2px solid #007bff;">
+                <h4 style="margin: 0; font-size: 13px;">${service.title}</h4>
+                <p style="margin: 2px 0 0 0; font-size: 11px; color: #444;">${service.description}</p>
             </div>`;
     });
-    servicesHtml += '</div>';
 
-    // Conteúdo do PDF com os espaços para preenchimento manual
-    var pdfContent = `
-    <div style="font-family: Arial, sans-serif; color: #333; padding: 40px; width: 750px; background: #fff; line-height: 1.5;">
-        <div style="text-align: center; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 20px;">
-            <h1 style="font-size: 18px; margin: 0; color: #007bff; text-transform: uppercase;">Contrato de Prestação de Serviços Técnicos</h1>
-            <p style="font-size: 10px; color: #666; margin: 5px 0 0 0;">DM Solution Connect - Inteligência Digital</p>
+    // ESTILO COMUM PARA AS PÁGINAS
+    const pageStyle = `style="font-family: Arial, sans-serif; color: #333; padding: 50px; width: 750px; background: #fff; min-height: 1050px;"`;
+
+    // CONTEÚDO DA PÁGINA 1: Cabeçalho, Partes e Escopo
+    var contentPage1 = `
+    <div ${pageStyle}>
+        <div style="text-align: center; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 30px;">
+            <h1 style="font-size: 22px; margin: 0; color: #007bff; text-transform: uppercase;">Contrato de Prestação de Serviços Técnicos</h1>
+            <p style="font-size: 11px; color: #666; margin-top: 5px;">DM Solution Connect - Soluções Digitais & Inteligência</p>
         </div>
 
-        <div style="font-size: 12px;">
-            <h2 style="font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 4px; margin-bottom: 10px; font-weight: bold;">1. PARTES CONTRATANTES</h2>
-            <p><strong>CONTRATANTE:</strong> ${razaoSocial || '________________________________________________'}</p>
-            <p><strong>CNPJ/CPF:</strong> ${cpfCnpj || '________________________'}</p>
-            <p><strong>ENDEREÇO:</strong> ${endereco || '________________________________________________'}</p>
-            <p><strong>REPRESENTANTE:</strong> ${representante || '________________________________'}</p>
-            <p style="margin-top: 10px;"><strong>CONTRATADA:</strong> <strong>DM Solution</strong>, inscrita no CNPJ sob o nº 63.353.524/0001-86, com sede em Fortaleza-CE.</p>
+        <div style="font-size: 13px; margin-bottom: 30px;">
+            <h2 style="font-size: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: bold;">1. PARTES CONTRATANTES</h2>
+            <p style="margin: 10px 0;"><strong>CONTRATANTE:</strong> ${razaoSocial || '________________________________________________'}</p>
+            <p style="margin: 10px 0;"><strong>CNPJ/CPF:</strong> ${cpfCnpj || '________________________'}</p>
+            <p style="margin: 10px 0;"><strong>ENDEREÇO:</strong> ${endereco || '________________________________________________'}</p>
+            <p style="margin: 10px 0;"><strong>REPRESENTANTE:</strong> ${representante || '________________________________'}</p>
+            <p style="margin-top: 15px;"><strong>CONTRATADA:</strong> <strong>DM Solution</strong>, inscrita no CNPJ sob o nº 63.353.524/0001-86, com sede em Fortaleza-CE.</p>
         </div>
 
-        <div style="margin-top: 15px; font-size: 12px; text-align: justify;">
-            <h3 style="font-size: 13px; font-weight: bold; margin-bottom: 5px;">CLÁUSULA 1ª - DO OBJETO</h3>
-            <p>1.1. O presente contrato tem por objeto a execução dos serviços de tecnologia descritos no escopo abaixo, selecionados conforme a necessidade da CONTRATANTE.</p>
-            
-            <div style="background: #f9f9f9; padding: 10px; border-radius: 5px; margin: 10px 0;">
-                <h3 style="font-size: 12px; font-weight: bold; color: #007bff; margin: 0 0 5px 0;">ESCOPO TÉCNICO:</h3>
+        <div style="font-size: 13px;">
+            <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">CLÁUSULA 1ª - DO OBJETO E ESCOPO</h3>
+            <p style="margin-bottom: 15px;">1.1. O presente contrato tem por objeto a prestação dos serviços técnicos abaixo descritos:</p>
+            <div style="background: #fdfdfd; padding: 15px; border: 1px solid #f0f0f0; border-radius: 8px;">
                 ${servicesHtml}
             </div>
-
-            <h3 style="font-size: 13px; font-weight: bold; margin-top: 15px;">CLÁUSULA 2ª - PRAZO E VIGÊNCIA</h3>
-            <p>2.1. O contrato terá vigência de <strong>03 (três) meses</strong>. A renovação ocorre de forma automática por períodos iguais, salvo se houver aviso prévio de cancelamento de 30 dias por ambas as partes.</p>
-            
-            <h3 style="font-size: 13px; font-weight: bold; margin-top: 15px;">CLÁUSULA 3ª - RESCISÃO E MULTA</h3>
-            <p>3.1. Em caso de rescisão antecipada por parte da CONTRATANTE antes do prazo de 3 meses, será aplicada multa de 50% sobre o valor das parcelas vincendas.</p>
-
-            <h3 style="font-size: 13px; font-weight: bold; margin-top: 15px;">CLÁUSULA 4ª - VALORES E PAGAMENTO</h3>
-            <p>4.1. Pelos serviços descritos, a CONTRATANTE pagará os seguintes valores:</p>
-            <p style="margin-left: 20px; margin-top: 8px;"><strong>A) VALOR DE IMPLEMENTAÇÃO:</strong> R$ ________________________</p>
-            <p style="margin-left: 20px; margin-top: 8px;"><strong>B) VALOR DA MENSALIDADE:</strong> R$ ________________________</p>
-            <p style="margin-top: 10px;">4.2. O pagamento deverá ser efetuado via PIX ou Boleto até o dia 05 (cinco) de cada mês.</p>
-
-            <h3 style="font-size: 13px; font-weight: bold; margin-top: 15px;">CLÁUSULA 5ª - CONFIDENCIALIDADE</h3>
-            <p>5.1. A CONTRATADA compromete-se a manter sigilo absoluto sobre dados e estratégias da CONTRATANTE, em conformidade com a LGPD.</p>
         </div>
-          <p style="margin-top: 30px;">Data: ____ de ____________ de 2026.</p>
+    </div>`;
 
-        <div style="margin-top: 50px; font-size: 10px; text-align: center;">
-            <p>Estando as partes de pleno acordo, assinam o presente em duas vias.</p>
-            <br><br>
-            <div style="display: flex; justify-content: space-around;">
-                <div style="width: 300px; text-align: center; border-top: 1px solid #000; padding-top: 5px;">
-                    CONTRATANTE
-                </div>
-                <div style="width: 300px; text-align: center; border-top: 1px solid #000; padding-top: 5px;">
-                    DM SOLUTION CONNECT
-                </div>
+    // CONTEÚDO DA PÁGINA 2: Cláusulas Jurídicas, Valores e Assinaturas
+    var contentPage2 = `
+    <div ${pageStyle}>
+        <div style="font-size: 13px; text-align: justify; line-height: 1.6;">
+            <h3 style="font-size: 14px; font-weight: bold;">CLÁUSULA 2ª - DO PRAZO E VIGÊNCIA</h3>
+            <p>2.1. O presente contrato terá vigência mínima de <strong>03 (três) meses</strong>, com renovação automática por períodos iguais.</p>
+            
+            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px;">CLÁUSULA 3ª - DA RESCISÃO E MULTA</h3>
+            <p>3.1. A rescisão antecipada por parte da CONTRATANTE sem justa causa implicará em multa de 50% sobre o valor das parcelas restantes do período de vigência.</p>
+
+            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px; color: #d9534f;">CLÁUSULA 4ª - VALORES E CONDIÇÕES DE PAGAMENTO</h3>
+            <p>4.1. Como contraprestação pelos serviços, a CONTRATANTE pagará:</p>
+            <p style="margin: 10px 0 10px 20px;"><strong>A) TAXA DE IMPLEMENTAÇÃO (SETUP):</strong> R$ ________________________</p>
+            <p style="margin: 10px 0 10px 20px;"><strong>B) MENSALIDADE DOS SERVIÇOS:</strong> R$ ________________________</p>
+            <p>4.2. Os pagamentos deverão ser quitados até o dia <strong>05 (cinco)</strong> de cada mês via PIX ou transferência bancária.</p>
+
+            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px;">CLÁUSULA 5ª - DAS OBRIGAÇÕES</h3>
+            <p>5.1. A CONTRATADA deverá manter o padrão técnico de excelência. 5.2. A CONTRATANTE deverá fornecer os acessos e informações necessárias em tempo hábil.</p>
+
+            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px;">CLÁUSULA 6ª - CONFIDENCIALIDADE (LGPD)</h3>
+            <p>6.1. Ambas as partes comprometem-se com o sigilo total de dados sensíveis e estratégicos conforme a Lei Geral de Proteção de Dados.</p>
+
+            <h3 style="font-size: 14px; font-weight: bold; margin-top: 20px;">CLÁUSULA 7ª - DO FORO</h3>
+            <p>7.1. Fica eleito o foro da comarca de Fortaleza-CE para dirimir quaisquer dúvidas deste instrumento.</p>
+        </div>
+
+        <div style="margin-top: 80px; font-size: 12px; text-align: center;">
+            <p>Fortaleza, ____ de ____________ de 2026.</p>
+            <br><br><br>
+            <div style="display: flex; justify-content: space-between; padding: 0 40px;">
+                <div style="width: 250px; border-top: 1px solid #000; padding-top: 5px;">CONTRATANTE</div>
+                <div style="width: 250px; border-top: 1px solid #000; padding-top: 5px;">DM SOLUTION CONNECT</div>
             </div>
-            
         </div>
-    </div>
-    `;
+    </div>`;
 
-    // Criar elemento temporário oculto
-    var element = document.createElement('div');
-    element.style.position = 'fixed';
-    element.style.left = '-10000px';
-    element.style.top = '0';
-    element.innerHTML = pdfContent;
-    document.body.appendChild(element);
+    // FUNÇÃO AUXILIAR PARA RENDERIZAR E ADICIONAR AO PDF
+    async function addPageToPdf(htmlContent, isLast) {
+        const tempDiv = document.createElement('div');
+        tempDiv.style.position = 'fixed';
+        tempDiv.style.left = '-10000px';
+        tempDiv.innerHTML = htmlContent;
+        document.body.appendChild(tempDiv);
 
-    // Configuração para evitar cortes: Scale 2 para qualidade e ajuste de página
-    html2canvas(element, { 
-        scale: 2, 
-        useCORS: true,
-        backgroundColor: "#ffffff"
-    }).then(canvas => {
-        const { jsPDF } = window.jspdf;
-        var pdf = new jsPDF('p', 'mm', 'a4');
+        const canvas = await html2canvas(tempDiv, { scale: 2, useCORS: true });
+        const imgData = canvas.toDataURL('image/png');
+        doc.addImage(imgData, 'PNG', 0, 0, 210, 297); // Ajuste exato A4
         
-        var imgData = canvas.toDataURL('image/png');
-        var imgWidth = 210; // Largura do A4 em mm
-        var pageHeight = 295; // Altura do A4 em mm
-        var imgHeight = (canvas.height * imgWidth) / canvas.width;
-        var heightLeft = imgHeight;
-        var position = 0;
+        if (!isLast) doc.addPage();
+        document.body.removeChild(tempDiv);
+    }
 
-        // Adicionar imagem ao PDF tratando quebras de página
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-
-        while (heightLeft > 0) {
-            position = heightLeft - imgHeight;
-            pdf.addPage();
-            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-        }
-
-        pdf.save(`Contrato_DM_${razaoSocial || 'Servicos'}.pdf`);
-        document.body.removeChild(element);
-    }).catch(error => {
-        console.error('Erro na geração:', error);
-        document.body.removeChild(element);
-    });
+    try {
+        await addPageToPdf(contentPage1, false);
+        await addPageToPdf(contentPage2, true);
+        doc.save(`Contrato_DM_${razaoSocial.replace(/\s+/g, '_') || 'Digital'}.pdf`);
+    } catch (err) {
+        console.error("Erro ao gerar páginas:", err);
+    }
 }
