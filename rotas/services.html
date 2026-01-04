@@ -3,154 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços — Desenvolvimento & Automações | Dev Marcelo</title>
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <meta name="description" content="Explore todos os serviços de tecnologia e inovação oferecidos pela DM Soluções Connect.">
+    <title>Nossos Serviços | DM Soluções Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Banner específico da página de serviços */
-    .services-banner{background-image:url('/images/banner.jpg');background-size:cover;background-position:center;height:360px;display:flex;align-items:center;justify-content:center}
-    /* Overlay escuro mais forte para garantir legibilidade */
-    .services-banner__overlay{width:100%;height:100%;background:linear-gradient(rgba(3,7,18,0.72),rgba(3,7,18,0.72));display:flex;align-items:center}
-    .services-banner__content{color:#fff;text-align:center;max-width:1100px;padding:0 1rem}
-    .services-banner__content h1{font-size:2rem;margin:0 0 .5rem;color:#fff;text-shadow:0 6px 18px rgba(2,6,23,0.6)}
-    .services-banner__content p{margin:0;opacity:0.95;color:#fff;text-shadow:0 4px 10px rgba(2,6,23,0.45)}
-    /* fila de imagens representando contexto: celular, eu, cliente, agente */
-    .services-banner__thumbs{display:flex;gap:0.75rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
-    .services-banner__thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.28)}
-    @media(min-width:900px){.services-banner__content h1{font-size:2.6rem}.services-banner__thumbs img{width:84px;height:84px}}
+        /* --- Estilos Personalizados --- */
+        :root {
+            --primary-color: #0d6efd; /* Azul Tech Bootstrap */
+            --secondary-color: #212529; /* Cinza Escuro */
+            --accent-color: #0dcaf0; /* Ciano para detalhes */
+            --bg-light: #f8f9fa;
+        }
 
-        /* Small page-specific overrides to keep the page clean and focused */
-        .services-hero { padding: 4rem 1.25rem; text-align: center; background: var(--green-50); }
-        .services-hero h1 { margin-bottom: 0.5rem; }
-        .services-hero p.lead { max-width: 900px; margin: 0 auto 1.25rem auto; color: rgba(0,0,0,0.8); }
-        .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
-        .service-card { background:#fff; border-radius:10px; padding:1.25rem; box-shadow:0 6px 20px rgba(2,6,23,0.06); }
-        .service-card h3 { margin-top:0; }
-        .contact-cta { text-align:center; margin:2.5rem 0; }
-        .contact-cta .custom-button { font-size:1rem; padding:0.9rem 1.5rem; }
-        @media (max-width:900px){ .services-grid { grid-template-columns: 1fr; } }
-        /* ícone do WhatsApp dentro do botão */
-        .whatsapp-icon{width:20px;height:20px;object-fit:cover;vertical-align:middle;margin-right:0.6rem}
-        .button .whatsapp-icon{filter:brightness(0) invert(1)}
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(33, 37, 41, 0.95) !important; /* Fundo escuro translúcido */
+            backdrop-filter: blur(10px);
+        }
+        .navbar-brand span {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        
+        /* --- Hero Section for Services Page --- */
+        #hero-servicos {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #343a40 100%);
+            color: white;
+        }
+        #hero-servicos h1 {
+            font-weight: 700;
+            font-size: 3rem;
+        }
+
+        /* --- Seção de Serviços (Fundo com eu-pé.png) --- */
+        #servicos {
+            position: relative;
+            background-image: url('../images/eu-pé.png'); /* Caminho ajustado */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed; 
+            padding: 100px 0;
+            color: white;
+        }
+
+        #servicos::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(13, 20, 35, 0.85); /* Azul escuro muito transparente */
+            z-index: 1;
+        }
+
+        .servicos-container {
+            position: relative;
+            z-index: 2; /* Garante que o conteúdo fique acima da camada escura */
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 700;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 60px; height: 3px; background: var(--primary-color);
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+        
+        /* Cards de Serviço */
+        .service-card {
+            background: rgba(255, 255, 255, 0.95); /* Cartão quase branco sólido */
+            border: none;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            color: var(--secondary-color);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .icon-box {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- Banner de Atualizações e Pacotes --- */
+        #atualizacoes {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .package-badge {
+            background: white;
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #aaa;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            transition: opacity 0.3s, visibility 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Banner com imagem no topo -->
-    <div class="services-banner" role="img" aria-label="Transforme sua Presença Digital com Tecnologia de Ponta">
-        <div class="services-banner__overlay">
-            <div class="services-banner__content">
-                <h1>Transforme sua Presença Digital com Tecnologia de Ponta</h1>
-                <p>No mundo atual, ter uma presença digital sólida e inteligente é essencial</p>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">DM Soluções <span>Connect</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pacotes.html">Pacotes</a></li>
+                    <li class="nav-item"><a class="btn btn-primary ms-lg-3 text-white" href="#contato">Fale Conosco</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero-servicos" class="d-flex align-items-center">
+        <div class="container text-center">
+            <h1>Todos os Nossos Serviços</h1>
+            <p class="lead text-white-50">Um ecossistema completo de tecnologia para o seu negócio.</p>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <div class="container servicos-container">
+            <div class="row gy-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Desenvolvimento Web</h4>
+                        <p>Criação, modernização, manutenção e otimização de sites, lojas e landing pages.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h4>Tráfego Pago</h4>
+                        <p>Planejamento, criação e otimização de campanhas em Google Ads, Meta Ads, etc.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Automação</h4>
+                        <p>Implementação de fluxos de e-mail, WhatsApp, CRM e integração entre sistemas.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Campanhas por WhatsApp</h4>
+                        <p>Criação, segmentação e execução de campanhas via WhatsApp, incluindo automações.</p>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Agentes de IA e Chatbots Avançados</h4>
+                        <p>Desenvolvimento de bots híbridos com fluxos inteligentes e integração com CRMs.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>APIs de Integração</h4>
+                        <p>Desenvolvimento e integração de APIs e webhooks com sistemas de terceiros.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Integração com Plataformas de Pagamento</h4>
+                        <p>Integração com gateways como Mercado Pago, Stripe e automações de PIX.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Desenvolvimento de Software e Apps Mobile</h4>
+                        <p>Desenvolvimento de sistemas sob medida e aplicativos para Android/iOS.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Suporte Técnico e Manutenção</h4>
+                        <p>Correção de bugs, atualizações, monitoramento e gestão de hospedagem.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Hospedagem e Gerenciamento de Servidores</h4>
+                        <p>Gestão de servidores cloud, configuração de ambientes, backups e segurança.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Consultoria Estratégica</h4>
+                        <p>Análise de negócio, reestruturação digital e planejamento de expansão.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Design Gráfico</h4>
+                        <p>Identidade visual, criação de peças para redes sociais, banners e layouts.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>SEO (Otimização para Google)</h4>
+                        <p>Otimização on-page, estrutura do site e relatórios mensais de ranqueamento.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Monitoramento de Campanhas e KPIs</h4>
+                        <p>Relatórios automatizados, análise de métricas e recomendações de otimização.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Suporte Premium / SLA Prioritário</h4>
+                        <p>Atendimento prioritário, tempo de resposta reduzido e recursos dedicados.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Desenvolvimento de Software e Apps Mobile</h4>
+                        <p>Desenvolvimento de sistemas sob medida e aplicativos para Android/iOS.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Desenvolvimento de Software e Apps Mobile</h4>
+                        <p>Desenvolvimento de sistemas sob medida e aplicativos para Android/iOS.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Desenvolvimento de Software e Apps Mobile</h4>
+                        <p>Desenvolvimento de sistemas sob medida e aplicativos para Android/iOS.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Desenvolvimento de Software e Apps Mobile</h4>
+                        <p>Desenvolvimento de sistemas sob medida e aplicativos para Android/iOS.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <div class="icon-box">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Desenvolvimento de Software e Apps Mobile</h4>
+                        <p>Desenvolvimento de sistemas sob medida e aplicativos para Android/iOS.</p>
+                    </div>
+                </div>
                 
             </div>
         </div>
-    </div>
+    </section>
 
-    <header class="services-hero">
-        <h1> Desenvolvimento Inteligente e Automação Digital</h1>
-        <p class="lead"> Transforme sua Presença Digital com Tecnologia de Ponta<br>
-        No mundo atual, ter uma presença digital sólida e inteligente é essencial. Eu ajudo empresas e empreendedores a se destacarem com sites profissionais, sistemas automatizados e agentes de inteligência artificial humanizados — tudo pensado para gerar resultados reais, reduzir custos e aumentar a eficiência.</p>
-        <div class="contact-cta">
-            <a class="button big primary custom-button" href="https://wa.me/5585991908723" target="_blank" rel="noopener">
-                <img src="" alt="WhatsApp" class="whatsapp-icon" onerror="this.src='/images/iconwpp.png'" />
-                fale comigo 
-            </a>
+    <section id="atualizacoes">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <span class="package-badge">Oferta por Tempo Limitado</span>
+                    <h2 class="fw-bold mb-4">Pacote "Connect Start" com 20% OFF</h2>
+                    <p class="lead mb-5">Atualize sua empresa hoje. Inclui desenvolvimento de site institucional + 1 ano de hospedagem cloud + consultoria inicial de segurança.</p>
+                    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                        <a href="#" class="btn btn-light btn-lg text-primary fw-bold rounded-pill px-5">Garantir Oferta</a>
+                        <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-5">Ver Todos os Pacotes</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="inner">
-            <div class="projects" style="background:transparent; padding-top:1rem; padding-bottom:0;">
-                <div class="inner">
-                    <header>
-                        <h2>🧠 Serviços que Impulsionam o Seu Negócio</h2>
-                        <p>Ofereço soluções completas: do site institucional à automação avançada e agentes de IA.</p>
-                    </header>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <h4 class="text-white">DM Soluções <span>Connect</span></h4>
+                </div>
+                <div class="col-12">
+                    <p>&copy; 2024 DM Soluções Connect. Todos os direitos reservados.</p>
+                    <div>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
                 </div>
             </div>
-            <button></button>
-
-            <div class="services-grid">
-                <article class="service-card">
-                    <h3>🚀 Desenvolvimento de Páginas Web Profissionais</h3>
-                    <p>Criação de sites modernos, rápidos e totalmente personalizados para o seu negócio. Cada página é projetada com foco em performance, experiência do usuário e conversão.</p>
-                    <ul>
-                        <li>Design responsivo (celular, tablet e desktop)</li>
-                        <li>Integração com WhatsApp, Instagram e redes sociais</li>
-                        <li>SEO otimizado</li>
-                        <li>Hospedagem segura e painel administrativo</li>
-                    </ul>
-                    <p><em>Benefício:</em> transforme visitantes em clientes com um site que transmite credibilidade.</p>
-                </article>
-
-                <article class="service-card">
-                    <h3>⚙️ Programação de Automações Inteligentes</h3>
-                    <p>Automatize tarefas repetitivas e conecte sistemas para que seu negócio trabalhe por você.</p>
-                    <ul>
-                        <li>Envio automático de mensagens no WhatsApp</li>
-                        <li>Integrações com ERPs, CRMs e plataformas de vendas</li>
-                        <li>Captura e qualificação automática de leads</li>
-                        <li>Agendamento e notificações automatizadas</li>
-                    </ul>
-                    <p><em>Benefício:</em> economize tempo, reduza custos e aumente a eficiência.</p>
-                </article>
-
-                <article class="service-card">
-                    <h3> Integração com Banco de Dados e Relatórios</h3>
-                    <p>Todos os sistemas podem se integrar a bancos de dados e gerar relatórios em tempo real para decisões orientadas a dados.</p>
-                    <ul>
-                        <li>MySQL, Firebase, MongoDB, PostgreSQL</li>
-                        <li>Painéis automatizados em Google Sheets / Excel Online</li>
-                        <li>Dashboards e relatórios com métricas e históricos</li>
-                    </ul>
-                </article>
-
-                <article class="service-card">
-                    <h3>🤖 Agentes de Inteligência Artificial Humanizados</h3>
-                    <p>Assistentes virtuais que entendem contexto e conversam com naturalidade — integráveis ao WhatsApp, site e redes sociais.</p>
-                    <ul>
-                        <li>Criação de persona alinhada à marca</li>
-                        <li>Treinamento com conversas reais</li>
-                        <li>Relatórios de performance das interações</li>
-                        <li>Atendimento 24/7 e redução de custos</li>
-                    </ul>
-                </article>
-            </div>
-
-            <section style="max-width:900px; margin:2rem auto; padding:0 1rem;">
-                <h3> Por que escolher meus serviços</h3>
-                <ul>
-                    <li>Atendimento personalizado e soluções sob medida</li>
-                    <li>Foco em resultados mensuráveis e integração completa</li>
-                    <li>Tecnologia atual e suporte contínuo</li>
-                </ul>
-
-                <h3> Processo de trabalho</h3>
-                <ol>
-                    <li>Diagnóstico gratuito</li>
-                    <li>Proposta personalizada</li>
-                    <li>Desenvolvimento técnico e testes</li>
-                    <li>Entrega com acompanhamento e relatórios</li>
-                </ol>
-
-                <h3>📲 Pronto para começar?</h3>
-                <p class="contact-cta">Clique no botão e fale comigo direto no WhatsApp.</p>
-                <div class="contact-cta">
-                    <a class="button big primary custom-button" href="https://wa.me/5585991908723" target="_blank" rel="noopener">
-                <img src="" alt="WhatsApp" class="whatsapp-icon" onerror="this.src='/images/iconwpp.png'" />
-                fale comigo 
-            </a>
-                </div>
-            </section>
-        </section>
-    </main>
-
-    <footer class="wrapper style1 align-center" style="margin-top:3rem;">
-        <div class="inner">
-            <p>&copy; <a href="https://marcelosouza.site/">Dev Marcelo</a><a href="https://wa.me/5585991908723">— Desenvolvimento e Automações ·</a></p>
         </div>
     </footer>
 
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <a href="#" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
+    <script>
+        // Smooth scroll for anchor links, if any are used in the future
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll-to-top button logic
+        const scrollTopBtn = document.querySelector('.scroll-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) { // Show button after scrolling 300px
+                if (!scrollTopBtn.classList.contains('show')) {
+                    scrollTopBtn.style.display = 'block';
+                    setTimeout(() => {
+                        scrollTopBtn.classList.add('show');
+                    }, 10);
+                }
+            } else {
+                if (scrollTopBtn.classList.contains('show')) {
+                    scrollTopBtn.classList.remove('show');
+                    setTimeout(() => {
+                        scrollTopBtn.style.display = 'none';
+                    }, 300); // Match transition duration
+                }
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
 </html>
