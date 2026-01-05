@@ -77,18 +77,51 @@
         /* --- Seção de Clientes --- */
         #clientes {
             background-color: var(--bg-light);
-            padding: 50px 0;
+            padding: 40px 0;
+            overflow: hidden;
         }
-        .client-logo {
-            filter: grayscale(100%);
+        
+        /* Slider Infinito */
+        .logos-slider {
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logos-track {
+            display: inline-block;
+            animation: scroll-left-to-right 30s linear infinite;
+        }
+
+        .logos-track img {
+            height: 60px;
+            margin: 0 40px;
+            /* filter: grayscale(100%); */
             opacity: 0.6;
             transition: 0.3s;
-            max-height: 60px;
-            width: auto;
+            display: inline-block;
         }
-        .client-logo:hover {
+
+        .logos-track img:hover {
             filter: grayscale(0%);
             opacity: 1;
+            transform: scale(1.1);
+        }
+
+        @keyframes scroll-left-to-right {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logos-track img {
+                height: 40px;
+                margin: 0 20px;
+            }
         }
 
         /* --- Seção de Serviços (Fundo com eu-pé.png) --- */
@@ -240,7 +273,7 @@
                     <p class="lead mb-4">Soluções digitais personalizadas para escalar o seu negócio com confiança e inovação.</p>
                     <div class="d-flex justify-content-center justify-content-lg-start gap-3">
                         <a href="#servicos" class="btn btn-primary btn-lg rounded-pill px-4">Nossas Soluções</a>
-                        <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-4"><i class="fas fa-play me-2"></i> Ver Demo</a>
+                        <!-- <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-4"><i class="fas fa-play me-2"></i> Ver Demo</a> -->
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 text-center hero-image-container">
@@ -253,18 +286,21 @@
     <section id="clientes">
         <div class="container text-center">
             <h6 class="text-muted text-uppercase mb-4 fw-bold ls-2">Empresas que confiam na DM Soluções</h6>
-            <div class="row justify-content-center align-items-center gy-4">
-                <div class="col-6 col-md-3 col-lg-2">
-                    <img src="https://via.placeholder.com/150x60/cccccc/969696?text=CLIENTE+01" alt="Cliente 1" class="img-fluid client-logo">
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <img src="https://via.placeholder.com/150x60/cccccc/969696?text=CLIENTE+02" alt="Cliente 2" class="img-fluid client-logo">
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <img src="https://via.placeholder.com/150x60/cccccc/969696?text=CLIENTE+03" alt="Cliente 3" class="img-fluid client-logo">
-                </div>
-                <div class="col-6 col-md-3 col-lg-2">
-                    <img src="https://via.placeholder.com/150x60/cccccc/969696?text=CLIENTE+04" alt="Cliente 4" class="img-fluid client-logo">
+            
+            <div class="logos-slider">
+                <div class="logos-track">
+                    <!-- Lista Original -->
+                    <img src="./images/empresa (1).jpeg" alt="Cliente 1">
+                    <img src="./images/empresa (2).jpeg" alt="Cliente 2">
+                    <img src="./images/empresa (3).jpeg" alt="Cliente 3">
+                    <img src="./images/empresa (4).jpeg" alt="Cliente 4">
+                    <img src="./images/empresa (5).jpeg" alt="Cliente 5">
+                    <!-- Duplicata para o Loop Infinito -->
+                    <img src="./images/empresa (1).jpeg" alt="Cliente 1">
+                    <img src="./images/empresa (2).jpeg" alt="Cliente 2">
+                    <img src="./images/empresa (3).jpeg" alt="Cliente 3">
+                    <img src="./images/empresa (4).jpeg" alt="Cliente 4">
+                    <img src="./images/empresa (5).jpeg" alt="Cliente 5">
                 </div>
             </div>
         </div>
@@ -476,7 +512,7 @@
                         <span class="text-muted opacity-75 fs-6 fw-normal mt-3 mb-4">valor da campanha mensal já incluso no pacote.</span></p>
                     <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
                         <a href="https://wa.me/5585991908723?text=tenho%20interesse%20no%20pacote%20Connect%20Start" class="btn btn-light btn-lg text-primary fw-bold rounded-pill px-5">Garantir Oferta</a>
-                        <a href="rotas/pacotes.html" class="btn btn-outline-light btn-lg rounded-pill px-5">Ver Todos os Pacotes</a>
+                        <a href="rotas/services.html" class="btn btn-outline-light btn-lg rounded-pill px-5">Ver Todos os Serviços</a>
                     </div>
                 </div>
             </div>
