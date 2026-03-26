@@ -59,6 +59,9 @@ async function gerarPDF() {
         return;
     }
 
+    // Obter o dia de pagamento selecionado
+    var diaPagamento = document.getElementById('dia-pagamento') ? document.getElementById('dia-pagamento').value : '05';
+
     var servicesHtml = '';
     selectedServices.forEach(function(service) {
         servicesHtml += `
@@ -98,6 +101,8 @@ async function gerarPDF() {
     </div>`;
 
     // CONTEÚDO DA PÁGINA 2: Cláusulas Jurídicas, Valores e Assinaturas
+
+    var diaPagamentoTexto = diaPagamento.padStart(2, '0');
     var contentPage2 = `
     <div ${pageStyle}>
         <div style="font-size: 13px; text-align: justify; line-height: 1.6;">
@@ -111,7 +116,7 @@ async function gerarPDF() {
             <p>4.1. Como contraprestação pelos serviços, a CONTRATANTE pagará:</p>
             <p style="margin: 10px 0 10px 20px;"><strong>A) TAXA DE IMPLEMENTAÇÃO:</strong> R$ ________________________</p>
             <p style="margin: 10px 0 10px 20px;"><strong>B) MENSALIDADE DOS SERVIÇOS:</strong> R$ ________________________</p>
-            <p>4.2. Os pagamentos deverão ser quitados até o dia <strong>05 (cinco)</strong> de cada mês via PIX ou transferência bancária.</p>
+            <p>4.2. Os pagamentos deverão ser quitados até o dia <strong>${diaPagamentoTexto} (${diaPagamentoTexto})</strong> de cada mês via PIX ou transferência bancária.</p>
 
             <h3 style="font-size: 12px; font-weight: bold; margin-top: 20px;">CLÁUSULA 5ª - DAS OBRIGAÇÕES</h3>
             <p>5.1. A CONTRATADA deverá manter o padrão técnico de excelência. 5.2. A CONTRATANTE deverá fornecer os acessos e informações necessárias em tempo hábil.</p>
